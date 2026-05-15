@@ -377,7 +377,8 @@ const loader = new GLTFLoader();
 let model;
 
 loader.load(
-  import.meta.env.BASE_URL + "class.glb", 
+  import.meta.env.BASE_URL + "class.glb",
+  function (gltf) { 
   model = gltf.scene;
   model.scale.set(0.1, 0.1, 0.1);
   model.position.set(0, 0, 0);
