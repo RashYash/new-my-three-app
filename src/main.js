@@ -256,12 +256,7 @@ light.position.set(5, 5, 5);
 scene.add(light);
 
 const textureLoader = new THREE.TextureLoader();
-const texture = textureLoader.load(
-  import.meta.env.BASE_URL + "texture1.jpg",
-  () => console.log("Texture loaded"),
-  undefined,
-  (err) => console.log("Texture failed", err)
-);
+const texture = textureLoader.load(import.meta.env.BASE_URL + "texture1.jpg");
 
 //cube 01
 const geometry1 = new THREE.BoxGeometry(1, 1, 1);
