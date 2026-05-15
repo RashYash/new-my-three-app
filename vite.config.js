@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/my-three-app/'
+  base: '/new-my-three-app/'
 })
 
