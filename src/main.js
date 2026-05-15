@@ -22,7 +22,7 @@ scene.add(directionalLight);
 
 const loader = new GLTFLoader();
 let model;
-loader.load("./snow_car.glb", function (gltf) {
+loader.load(import.meta.env.BASE_URL + "snow_car.glb", (gltf) => {
   model = gltf.scene;
   model.scale.set(1, 1, 1);
   model.position.set(0, 0, 0);
