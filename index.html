@@ -1,80 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Three.js Assignments Dashboard</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Three.js Assignments Dashboard</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-    .container {
-      text-align: center;
-    }
+      .container {
+        text-align: center;
+      }
 
-    h1 {
-      margin-bottom: 30px;
-    }
+      h1 {
+        margin-bottom: 30px;
+      }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
 
-    button {
-      padding: 15px 25px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background: #38bdf8;
-      color: black;
-      font-weight: bold;
-      transition: 0.2s;
-    }
+      button {
+        padding: 15px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #38bdf8;
+        color: black;
+        font-weight: bold;
+        transition: 0.2s;
+      }
 
-    button:hover {
-      transform: scale(1.05);
-      background: #0ea5e9;
-    }
-  </style>
-</head>
+      button:hover {
+        transform: scale(1.05);
+        background: #0ea5e9;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <div class="container">
+      <h1>Three.js Assignments</h1>
 
-  <div class="container">
-
-    <h1>Three.js Assignments</h1>
-
-    <div class="grid">
-
-      <button onclick="go('src/pages/assignment1.html')">Assignment 1</button>
-      <button onclick="go('src/pages/assignment2.html')">Assignment 2</button>
-      <button onclick="go('src/pages/assignment3.html')">Assignment 3</button>
-      <button onclick="go('src/pages/assignment4.html')">Assignment 4</button>
-      <button onclick="go('src/pages/assignment5.html')">Assignment 5</button>
-      <button onclick="go('src/pages/assignment6.html')">Assignment 6</button>
-      <button onclick="go('src/pages/assignment7.html')">Assignment 7</button>
-      <button onclick="go('src/pages/assignment8.html')">Assignment 8</button>
-
+      <div class="grid">
+        <button onclick="go('/new-my-three-app/src/pages/assignment1.html')">
+          Assignment 1
+        </button>
+        <button onclick="go('/new-my-three-app/src/pages/assignment2.html')">
+          Assignment 2
+        </button>
+        <button onclick="go('/new-my-three-app/src/pages/assignment3.html')">
+          Assignment 3
+        </button>
+        <button onclick="go('/new-my-three-app/src/pages/assignment4.html')">
+          Assignment 4
+        </button>
+        <button onclick="go('/new-my-three-app/src/pages/assignment5.html')">
+          Assignment 5
+        </button>
+        <button onclick="go('/new-my-three-app/src/pages/assignment6.html')">
+          Assignment 6
+        </button>
+        <button onclick="go('/new-my-three-app/src/pages/assignment7.html')">
+          Assignment 7
+        </button>
+        <button onclick="go('/new-my-three-app/src/pages/assignment8.html')">
+          Assignment 8
+        </button>
+      </div>
     </div>
 
-  </div>
-
-  <script>
-    function go(page) {
-      window.location.href = page;
-    }
-  </script>
-
-</body>
+    <script>
+      function go(page) {
+        window.location.href = page;
+      }
+    </script>
+  </body>
 </html>
