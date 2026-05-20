@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Assignment 2</title>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .back-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        border: none;
+        background: black;
+        color: white;
+        cursor: pointer;
+        z-index: 100;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <button class="back-btn" onclick="goHome()">
+      Back
+    </button>
+
+    <script type="module" src="../js/assignment2.js"></script>
+
+    <script>
+      function goHome() {
+        window.location.href = "/new-my-three-app/";
+      }
+    </script>
+
+  </body>
+</html>
