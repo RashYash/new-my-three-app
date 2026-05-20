@@ -1,13 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>My first three.js app</title>
-    <style>
-      body { margin: 0; }
-    </style>
-    <script type="module" crossorigin src="/new-my-three-app/assets/index-jFZB7j2v.js"></script>
-  </head>
-  <body>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Three.js Assignments Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #38bdf8;
+      color: black;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #0ea5e9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Three.js Assignments</h1>
+
+    <div class="grid">
+
+      <button onclick="go('src/pages/assignment1.html')">Assignment 1</button>
+      <button onclick="go('src/pages/assignment2.html')">Assignment 2</button>
+      <button onclick="go('src/pages/assignment3.html')">Assignment 3</button>
+      <button onclick="go('src/pages/assignment4.html')">Assignment 4</button>
+      <button onclick="go('src/pages/assignment5.html')">Assignment 5</button>
+      <button onclick="go('src/pages/assignment6.html')">Assignment 6</button>
+      <button onclick="go('src/pages/assignment7.html')">Assignment 7</button>
+      <button onclick="go('src/pages/assignment8.html')">Assignment 8</button>
+
+    </div>
+
+  </div>
+
+  <script>
+    function go(page) {
+      window.location.href = page;
+    }
+  </script>
+
+</body>
 </html>
