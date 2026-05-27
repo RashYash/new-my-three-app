@@ -13,7 +13,7 @@
         background: #111;
       }
 
-      #model-container {
+      #model-container10 {
         position: fixed;
         inset: 0;
       }
@@ -36,20 +36,93 @@
         font-weight: bold;
         cursor: pointer;
       }
+      .color-group {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .color-circle {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 2px solid white;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .gold {
+        background: gold;
+      }
+
+      .blue {
+        background: blue;
+      }
+
+      .red {
+        background: red;
+      }
+
+      .black {
+        background: black;
+      }
+
+      .silver {
+        background: silver;
+      }
+
+      .green {
+        background: green;
+      }
 
       button:hover {
         transform: scale(1.05);
+      }
+
+      .back-btn {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: black;
+        color: white;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        z-index: 200;
       }
     </style>
   </head>
 
   <body>
-    <div id="model-container"></div>
+    <button class="back-btn" onclick="goHome()">Back</button>
+
+    <div id="model-container10"></div>
+
     <div class="controls">
-      <button id="goldCar">gold</button>
-      <button id="blueCar">Blue</button>
+      <button id="bodyBtn">Body Color</button>
+
+      <div class="color-group">
+        <button class="color-circle gold" id="goldCar"></button>
+        <button class="color-circle blue" id="blueCar"></button>
+        <button class="color-circle red" id="redCar"></button>
+      </div>
+      
+      <button id="wheelBtn">Rim Color</button>
+
+      <div class="color-group">
+        <button class="color-circle black" id="blackRim"></button>
+        <button class="color-circle silver" id="silverRim"></button>
+        <button class="color-circle green" id="greenRim"></button>
+      </div>
     </div>
 
     <script type="module" src="../js/assignment10.js"></script>
+
+    <script>
+      function goHome() {
+        window.location.href = "/new-my-three-app/";
+      }
+    </script>
   </body>
 </html>
