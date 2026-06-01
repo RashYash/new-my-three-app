@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Assignment 11</title>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial;
+        background: #10153a;
+      }
+
+      #model-container11 {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+      }
+
+      canvas {
+        display: block;
+        outline: none;
+      }
+
+      .ui {
+        position: absolute;
+        z-index: 9999;
+      }
+
+      .controls {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        pointer-events: auto;
+      }
+
+      button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 10px;
+        background: #4ee0ef;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .back-btn {
+        top: 15px;
+        left: 15px;
+        position: absolute;
+        background: black;
+        color: white;
+        padding: 8px 14px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .instructions {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 9999;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 12px;
+        border-radius: 10px;
+        line-height: 1.6;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <button class="back-btn ui" onclick="goHome()">Back</button>
+
+    <div class="instructions ui">
+      W / ↑ = Walk Forward <br />
+      Shift + W = Run Forward
+    </div>
+
+    <div id="model-container11"></div>
+
+    <div class="controls ui">
+      <button id="walkBtn">Walk</button>
+      <button id="punchBtn">Punch</button>
+      <button id="kickBtn">Kick</button>
+      <button id="jumpBtn">Jump</button>
+      <button id="runBtn">Run</button>
+    </div>
+
+    <script type="module" src="../js/assignment11.js"></script>
+
+    <script>
+      function goHome() {
+        window.location.href = "/new-my-three-app/";
+      }
+    </script>
+
+  </body>
+</html>
