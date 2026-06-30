@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Assignment 13</title>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .back-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        border: none;
+        background: black;
+        color: white;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      .ui-panel {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        color: white;
+        z-index: 100;
+        width: 200px;
+      }
+
+      .ui-panel input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="back-btn" onclick="goHome()">Back</button>
+
+    <div class="ui-panel">
+      <h3>Body Size Control</h3>
+
+      <label>Height (cm)</label>
+      <input id="height" type="number" value="170" />
+
+      <label>Chest (cm)</label>
+      <input id="chest" type="number" value="95" />
+
+      <label>Waist (cm)</label>
+      <input id="waist" type="number" value="80" />
+
+      <label>Hips (cm)</label>
+      <input id="hips" type="number" value="90" />
+
+      <button onclick="applyBody()">Apply</button>
+    </div>
+
+    <script type="module" src="../js/assignment13.js"></script>
+
+    <script>
+      function goHome() {
+        window.location.href = "/new-my-three-app/";
+      }
+    </script>
+  </body>
+</html>
