@@ -2,63 +2,142 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Assignment 13</title>
+    <title>Body Editor</title>
 
     <style>
-      body {
+      * {
         margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
         overflow: hidden;
+        background: #0f0f0f;
       }
 
       .back-btn {
         position: absolute;
         top: 20px;
         left: 20px;
-        padding: 10px 20px;
+        padding: 10px 18px;
         border: none;
-        background: black;
+        background: rgba(0, 0, 0, 0.7);
         color: white;
+        border-radius: 10px;
         cursor: pointer;
-        z-index: 100;
+        z-index: 10;
+        backdrop-filter: blur(10px);
       }
 
-      .ui-panel {
+      .right-ui {
         position: absolute;
         top: 20px;
         right: 20px;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 10;
+      }
+
+      .gender-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .gender-buttons button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
         color: white;
-        z-index: 100;
-        width: 200px;
+        backdrop-filter: blur(10px);
+        transition: 0.2s;
+      }
+
+      .gender-buttons button:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .ui-panel {
+        width: 260px;
+        padding: 18px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        color: white;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .ui-panel h3 {
+        margin-bottom: 12px;
+        font-size: 18px;
+      }
+
+      .ui-panel label {
+        font-size: 12px;
+        opacity: 0.8;
       }
 
       .ui-panel input {
         width: 100%;
-        margin-bottom: 10px;
+        padding: 8px;
+        margin: 6px 0 12px 0;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      .ui-panel button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 12px;
+        background: #4f7cff;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+      }
+
+      .ui-panel button:hover {
+        background: #6a92ff;
       }
     </style>
   </head>
 
   <body>
-    <button class="back-btn" onclick="goHome()">Back</button>
+    <button class="back-btn" onclick="goHome()">← Back</button>
 
-    <div class="ui-panel">
-      <h3>Body Size Control</h3>
+    <div class="right-ui">
+      <div class="gender-buttons">
+        <button onclick="showMale()">Male</button>
+        <button onclick="showFemale()">Female</button>
+      </div>
 
-      <label>Height (cm)</label>
-      <input id="height" type="number" value="170" />
+      <div class="ui-panel">
+        <h3>Body Controls</h3>
 
-      <label>Chest (cm)</label>
-      <input id="chest" type="number" value="95" />
+        <label>Height (cm)</label>
+        <input id="height" type="number" value="170" />
 
-      <label>Waist (cm)</label>
-      <input id="waist" type="number" value="80" />
+        <label>Chest (cm)</label>
+        <input id="chest" type="number" value="95" />
 
-      <label>Hips (cm)</label>
-      <input id="hips" type="number" value="90" />
+        <label>Waist (cm)</label>
+        <input id="waist" type="number" value="80" />
 
-      <button onclick="applyBody()">Apply</button>
+        <label>Hips (cm)</label>
+        <input id="hips" type="number" value="90" />
+
+        <button onclick="applyBody()">Apply Changes</button>
+      </div>
     </div>
 
     <script type="module" src="../js/assignment13.js"></script>

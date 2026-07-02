@@ -4,6 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x111111);
+
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
@@ -38,59 +39,90 @@ loader.load(import.meta.env.BASE_URL + "assets/model/room.glb", (gltf) => {
   room.rotation.y = -Math.PI / 2;
   scene.add(room);
   console.log("Room Loaded");
+
+  camera.position.set(
+    1.7221511767844412e-15,
+    0.4980512025377698,
+    3.3169179971248375,
+  );
+
+  camera.rotation.set(
+    -0.14904135080484743,
+    -3.545948914644275e-18,
+    -5.324412971941212e-19,
+  );
 });
 
-let character;
+let model;
 
-let chest;
-let belly;
-let pelvis;
-let hipL;
-let hipR;
+let mChest, mBelly, mPelvis, mHipL, mHipR;
+let fChest, fBelly, fPelvis, fHipL, fHipR;
 
-loader.load(
-  import.meta.env.BASE_URL + "assets/model/both1.glb",
+let maleRoot, femaleRoot;
 
-  (gltf) => {
-    character = gltf.scene;
-    character.scale.set(0.5, 0.5, 0.5);
-    character.position.set(-0.5, -1.42, 0.5);
-    scene.add(character);
-    console.log("Character Loaded");
+let selectedGender = "male";
 
-    character.traverse((child) => {
-      console.log(child.name);
+loader.load(import.meta.env.BASE_URL + "assets/model/both2.glb", (gltf) => {
+  model = gltf.scene;
+  model.scale.set(0.5, 0.5, 0.5);
+  model.position.set(0, -1.42, 0.5);
 
-      switch (child.name) {
-        case "Chest_40":
-          chest = child;
-          break;
+  scene.add(model);
 
-        case "Belly_41":
-          belly = child;
-          break;
+  console.log("Character Loaded");
 
-        case "Pelvis_46":
-          pelvis = child;
-          break;
+  maleRoot = model.getObjectByName("Armature001_121");
+  femaleRoot = model.getObjectByName("Armature_60");
 
-        case "HipL_43":
-          hipL = child;
-          break;
+  if (maleRoot && femaleRoot) {
+    maleRoot.visible = true;
+    femaleRoot.visible = false;
+  }
 
-        case "HipR_45":
-          hipR = child;
-          break;
-      }
-    });
-  },
-);
+  model.traverse((child) => {
+    console.log(child.name);
+
+    if (child.name === "Chest_40") fChest = child;
+    if (child.name === "Belly_41") fBelly = child;
+    if (child.name === "Pelvis_46") fPelvis = child;
+    if (child.name === "HipL_43") fHipL = child;
+    if (child.name === "HipR_45") fHipR = child;
+
+    if (child.name === "Chest_101") mChest = child;
+    if (child.name === "Belly_102") mBelly = child;
+    if (child.name === "Pelvis_107") mPelvis = child;
+    if (child.name === "HipL_104") mHipL = child;
+    if (child.name === "HipR_106") mHipR = child;
+  });
+});
+
+window.showMale = function () {
+  selectedGender = "male";
+
+  if (maleRoot && femaleRoot) {
+    maleRoot.visible = true;
+    femaleRoot.visible = false;
+  }
+
+  console.log("Male Selected");
+};
+
+window.showFemale = function () {
+  selectedGender = "female";
+
+  if (maleRoot && femaleRoot) {
+    maleRoot.visible = false;
+    femaleRoot.visible = true;
+  }
+
+  console.log("Female Selected");
+};
 
 window.applyBody = function () {
   const height = parseFloat(document.getElementById("height").value);
-  const chestSize = parseFloat(document.getElementById("chest").value);
-  const waistSize = parseFloat(document.getElementById("waist").value);
-  const hipSize = parseFloat(document.getElementById("hips").value);
+  const chest = parseFloat(document.getElementById("chest").value);
+  const waist = parseFloat(document.getElementById("waist").value);
+  const hips = parseFloat(document.getElementById("hips").value);
 
   const BASE_HEIGHT = 170;
   const BASE_CHEST = 95;
@@ -98,35 +130,31 @@ window.applyBody = function () {
   const BASE_HIPS = 90;
 
   const heightRatio = height / BASE_HEIGHT;
-  const chestRatio = chestSize / BASE_CHEST;
-  const waistRatio = waistSize / BASE_WAIST;
-  const hipRatio = hipSize / BASE_HIPS;
+  const chestRatio = chest / BASE_CHEST;
+  const waistRatio = waist / BASE_WAIST;
+  const hipRatio = hips / BASE_HIPS;
 
-  if (character) {
-    character.scale.set(0.5, 0.5 * heightRatio, 0.5);
+  if (selectedGender === "male") {
+    if (model) model.scale.set(0.5, 0.5 * heightRatio, 0.5);
+
+    if (mChest) mChest.scale.set(chestRatio, 1, chestRatio);
+    if (mBelly) mBelly.scale.set(waistRatio, 1, waistRatio);
+    if (mPelvis) mPelvis.scale.set(hipRatio, 1, hipRatio);
+    if (mHipL) mHipL.scale.set(hipRatio, 1, hipRatio);
+    if (mHipR) mHipR.scale.set(hipRatio, 1, hipRatio);
   }
 
-  if (chest) {
-    chest.scale.set(chestRatio, 1, chestRatio);
+  if (selectedGender === "female") {
+    if (model) model.scale.set(0.5, 0.5 * heightRatio, 0.5);
+
+    if (fChest) fChest.scale.set(chestRatio, 1, chestRatio);
+    if (fBelly) fBelly.scale.set(waistRatio, 1, waistRatio);
+    if (fPelvis) fPelvis.scale.set(hipRatio, 1, hipRatio);
+    if (fHipL) fHipL.scale.set(hipRatio, 1, hipRatio);
+    if (fHipR) fHipR.scale.set(hipRatio, 1, hipRatio);
   }
 
-  if (belly) {
-    belly.scale.set(waistRatio, 1, waistRatio);
-  }
-
-  if (pelvis) {
-    pelvis.scale.set(hipRatio, 1, hipRatio);
-  }
-
-  if (hipL) {
-    hipL.scale.set(hipRatio, 1, hipRatio);
-  }
-
-  if (hipR) {
-    hipR.scale.set(hipRatio, 1, hipRatio);
-  }
-
-  console.log("Body Updated");
+  console.log("Body Updated:", selectedGender);
 };
 
 function animate() {
